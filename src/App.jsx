@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { ImageContainer } from "./ImageContainer";
-
+import { callPoke, callPokePhoto } from "./appi";
 function App() {
   const [count, setCount] = useState(0);
   const [arrayImage, setArrayImage] = useState([
@@ -57,7 +57,18 @@ function App() {
       url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
       name: "Tortuga",
     },
+    {
+      id: 11,
+      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
+      name: "Tortuga",
+    },
+    {
+      id: 12,
+      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
+      name: "Tortuga",
+    },
   ]);
+
   return (
     <>
       <header>
