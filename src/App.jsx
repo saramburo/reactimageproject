@@ -1,12 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { ImageContainer } from "./ImageContainer";
-import { callPoke, callPokePhoto } from "./appi";
+import { callPoke, callPokeLink } from "./appi";
+import organizeObjectToPokeList from "./jsFunctions";
 function App() {
   const [count, setCount] = useState(0);
-  const [arrayImage, setArrayImage] = useState([
+  const [arrayImage, setArrayImage] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    callPoke()
+      .then(organizeObjectToPokeList)
+      .then((attributes) => {
+        if (mounted) {
+          setArrayImage(attributes);
+        }
+      });
+    return () => (mounted = false);
+  }, []);
+
+  //funcion para reorganizar arrayimage  de modo aleatorio
+  const reorganizeArrayImageRandomly = (array) => {
+    const arrayImageLength = arrayImage.length;
+  };
+
+  return (
+    <>
+      <header>
+        <h1>How good is your memory</h1>
+      </header>
+      <div className="main-container">
+        <ImageContainer arrayImage={arrayImage} />
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+/* Dummy data
+
+useState([
     {
       id: 1,
       url: "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
@@ -37,48 +73,6 @@ function App() {
       url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
       name: "Tortuga",
     },
-    {
-      id: 7,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-    {
-      id: 8,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-    {
-      id: 9,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-    {
-      id: 10,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-    {
-      id: 11,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-    {
-      id: 12,
-      url: "https://s.yimg.com/ny/api/res/1.2/TLxQ82SAuWxf6uwg2e4WCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/es/levelup_525/dba23de2487ea6e4f41d244e1e982267",
-      name: "Tortuga",
-    },
-  ]);
+  ])
 
-  return (
-    <>
-      <header>
-        <h1>How good is your memory</h1>
-      </header>
-      <div className="main-container">
-        <ImageContainer arrayImage={arrayImage} />
-      </div>
-    </>
-  );
-}
-
-export default App;
+*/
