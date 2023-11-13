@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 
-export function ImageContainer({ arrayImage }) {
+export function ImageContainer({ arrayImage,suffleImageArray }) {
+
   return (
     <>
       {arrayImage.map((poke) => {
         return (
           <>
-            <div className="component-container" key={poke.id}>
+            <div className="component-container" onClick={suffleImageArray} key={poke.id}>
               <img
                 className="image-container"
                 src={poke.url}
