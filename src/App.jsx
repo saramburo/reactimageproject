@@ -21,28 +21,28 @@ function App() {
     return array;
   };
 
-  
- const suffleImageArray = () => {
-   const array = reorganizeArrayImageRandomly(arrayImage);
-   console.log(array)
-   setArrayImage(array)
-   
- };
+  const setImage = (array) => {
+    setArrayImage(array);
+  };
+
+  const suffleImageArray = () => {
+    const array = reorganizeArrayImageRandomly(arrayImage);
+    console.log(array);
+    setArrayImage(array);
+  };
   useEffect(() => {
     let mounted = true;
     callPoke()
       .then(organizeObjectToPokeList)
       .then((attributes) => {
         if (mounted) {
-          setArrayImage((attributes));
+          setArrayImage(attributes);
         }
       });
     return () => (mounted = false);
   }, []);
 
   //funcion para reorganizar arrayimage  de modo aleatorio
- 
-  
 
   return (
     <>
@@ -50,7 +50,11 @@ function App() {
         <h1>How good is your memory</h1>
       </header>
       <div className="main-container">
-        <ImageContainer suffleImageArray={suffleImageArray} arrayImage={arrayImage} />
+        <ImageContainer
+          suffleImageArray={suffleImageArray}
+          arrayImage={arrayImage}
+          setImage={setImage}
+        />
       </div>
     </>
   );
