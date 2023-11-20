@@ -1,18 +1,26 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 
-export function ImageContainer({ arrayImage, suffleImageArray, setImage }) {
-  const [newArrayImage, setNewArrayImage] = useState(arrayImage);
-
+export function ImageContainer({ arrayImage, shuffleImageArray }) {
+  const [newArrayImage, setNewArrayImage] = useState([]);
+  useEffect(() => {
+    setNewArrayImage(arrayImage);
+  });
+  const handleClick = (e) => {
+    const cardId = e.currentTarget.getAttribute("id");
+    let shuffle = [];
+    shuffle = shuffleImageArray(newArrayImage);
+    setNewArrayImage(shuffle);
+  };
   return (
     <>
-      {arrayImage.map((poke) => {
+      {newArrayImage?.map((poke) => {
         return (
           <>
             <div
               className="component-container"
-              onClick={suffleImageArray}
               key={poke.id}
+              onClick={handleClick}
             >
               <img
                 className="image-container"

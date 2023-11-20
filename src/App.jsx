@@ -21,14 +21,10 @@ function App() {
     return array;
   };
 
-  const setImage = (array) => {
-    setArrayImage(array);
-  };
-
-  const suffleImageArray = () => {
-    const array = reorganizeArrayImageRandomly(arrayImage);
-    console.log(array);
-    setArrayImage(array);
+  const shuffleImageArray = (array) => {
+    const suffleArray = reorganizeArrayImageRandomly(array);
+    console.log(suffleArray);
+    setArrayImage(suffleArray);
   };
   useEffect(() => {
     let mounted = true;
@@ -51,9 +47,8 @@ function App() {
       </header>
       <div className="main-container">
         <ImageContainer
-          suffleImageArray={suffleImageArray}
+          shuffleImageArray={shuffleImageArray}
           arrayImage={arrayImage}
-          setImage={setImage}
         />
       </div>
     </>
