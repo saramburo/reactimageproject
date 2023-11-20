@@ -18,10 +18,14 @@ export function ImageContainer({ arrayImage, shuffleImageArray }) {
     let shuffle = [];
     const cardId = e.currentTarget.getAttribute("value");
     shuffle = shuffleImageArray(newArrayImage);
+    if (!listCorrectPicksId.includes(cardId)) {
+      addScore(cardId);
+      console.log(listCorrectPicksId);
+    }
 
-    console.log(cardId);
     setNewArrayImage(shuffle);
   };
+
   return (
     <>
       {newArrayImage?.map((poke) => {
