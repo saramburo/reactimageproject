@@ -23,7 +23,7 @@ function App() {
 
   const shuffleImageArray = (array) => {
     const suffleArray = reorganizeArrayImageRandomly(array);
-    console.log(suffleArray);
+
     setArrayImage(suffleArray);
   };
   useEffect(() => {

@@ -3,13 +3,23 @@ import React, { useState, useEffect } from "react";
 
 export function ImageContainer({ arrayImage, shuffleImageArray }) {
   const [newArrayImage, setNewArrayImage] = useState([]);
+  const [score, setScore] = useState();
+  const [listCorrectPicksId, setListCorrectPicksId] = useState([]);
+
+  const addScore = (id) => {
+    setListCorrectPicksId(listCorrectPicksId.concat(id));
+  };
+  const checkImage = (array) => {};
+
   useEffect(() => {
     setNewArrayImage(arrayImage);
   });
   const handleClick = (e) => {
-    const cardId = e.currentTarget.getAttribute("id");
     let shuffle = [];
+    const cardId = e.currentTarget.getAttribute("key");
     shuffle = shuffleImageArray(newArrayImage);
+
+    console.log(cardId);
     setNewArrayImage(shuffle);
   };
   return (
