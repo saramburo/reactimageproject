@@ -16,7 +16,7 @@ export function ImageContainer({ arrayImage, shuffleImageArray }) {
   });
   const handleClick = (e) => {
     let shuffle = [];
-    const cardId = e.currentTarget.getAttribute("key");
+    const cardId = e.currentTarget.getAttribute("value");
     shuffle = shuffleImageArray(newArrayImage);
 
     console.log(cardId);
@@ -31,6 +31,7 @@ export function ImageContainer({ arrayImage, shuffleImageArray }) {
               className="component-container"
               key={poke.id}
               onClick={handleClick}
+              value={poke.id}
             >
               <img
                 className="image-container"
