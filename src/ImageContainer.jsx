@@ -3,26 +3,41 @@ import React, { useState, useEffect } from "react";
 
 export function ImageContainer({ arrayImage, shuffleImageArray }) {
   const [newArrayImage, setNewArrayImage] = useState([]);
-  const [score, setScore] = useState();
+  const [score, setScore] = useState(1);
   const [listCorrectPicksId, setListCorrectPicksId] = useState([]);
 
   const addScore = (id) => {
-    setListCorrectPicksId(listCorrectPicksId.concat(id));
+    //const addId=listCorrectPicksId.concat(id)
+    setListCorrectPicksId((prev)=>([...prev,id]));
+    setScore((prev)=>(prev+1))
   };
-  const checkImage = (array) => {};
 
-  useEffect(() => {
-    setNewArrayImage(arrayImage);
-  });
+
+  const gameOver=()=>{
+    setScore(1)
+    setListCorrectPicksId([])
+    alert("you lost the game.")
+  }
+  
+useEffect(() => {
+  const arr=arrayImage
+  setNewArrayImage(arr);
+  console.log(listCorrectPicksId);
+},[listCorrectPicksId,arrayImage]);
+ 
+
   const handleClick = (e) => {
-    let shuffle = [];
+    //let shuffle = [];
     const cardId = e.currentTarget.getAttribute("value");
-    shuffle = shuffleImageArray(newArrayImage);
+   let shuffle = shuffleImageArray(newArrayImage);
     if (!listCorrectPicksId.includes(cardId)) {
       addScore(cardId);
-      console.log(listCorrectPicksId);
-    }
-
+     
+       console.log(score);
+    }else{
+      gameOver()
+    }	
+   
     setNewArrayImage(shuffle);
   };
 
