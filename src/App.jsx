@@ -52,12 +52,6 @@ function App() {
 
   return (
     <>
-      <Header
-        score={score}
-        highestScore={highestScore}
-        updateHighScore={updateHighScore}
-        updateScore={updateScore}
-      />
       <div className="container">
         <ImageContainer
           className="main-container"

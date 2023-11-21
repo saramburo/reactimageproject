@@ -68,25 +68,27 @@ export function ImageContainer({
         highestScore={newHighestScore}
         className="main-header"
       />
-      {newArrayImage?.map((poke) => {
-        return (
-          <>
-            <div
-              className="component-container"
-              key={poke.id}
-              onClick={handleClick}
-              value={poke.id}
-            >
-              <img
-                className="image-container"
-                src={poke.url}
-                style={{ width: 350, height: 350 }}
-              />
-              <p>{poke.name}</p>
-            </div>
-          </>
-        );
-      })}
+      <div className="image-grid">
+        {newArrayImage?.map((poke) => {
+          return (
+            <>
+              <div
+                className="component-container"
+                key={poke.id}
+                onClick={handleClick}
+                value={poke.id}
+              >
+                <img
+                  className="image-container"
+                  src={poke.url}
+                  style={{ width: 350, height: 350 }}
+                />
+                <p>{poke.name}</p>
+              </div>
+            </>
+          );
+        })}
+      </div>
     </>
   );
 }
