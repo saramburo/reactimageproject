@@ -1,48 +1,73 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
+import { Header } from "./Header";
+export function ImageContainer({
+  arrayImage,
+  shuffleImageArray,
 
-export function ImageContainer({ arrayImage, shuffleImageArray }) {
+  updateScore,
+  updateHighScore,
+}) {
   const [newArrayImage, setNewArrayImage] = useState([]);
-  const [score, setScore] = useState(1);
+  const [newScore, setNewScore] = useState(0);
   const [listCorrectPicksId, setListCorrectPicksId] = useState([]);
+  const [newHighestScore, setNewHighestScore] = useState(0);
 
   const addScore = (id) => {
     //const addId=listCorrectPicksId.concat(id)
-    setListCorrectPicksId((prev)=>([...prev,id]));
-    setScore((prev)=>(prev+1))
+    setListCorrectPicksId((prev) => [...prev, id]);
+    setNewScore((prev) => prev + 1);
   };
 
-
-  const gameOver=()=>{
-    setScore(1)
-    setListCorrectPicksId([])
-    alert("you lost the game.")
+  function updateNewScore(value) {
+    const val = updateScore(value);
   }
-  
-useEffect(() => {
-  const arr=arrayImage
-  setNewArrayImage(arr);
-  console.log(listCorrectPicksId);
-},[listCorrectPicksId,arrayImage]);
- 
+
+  const topScore = () => {
+    if (newScore >= newHighestScore) {
+      setNewHighestScore((prev) => prev + 1);
+    }
+  };
+  const gameOver = () => {
+    setNewScore(0);
+    setListCorrectPicksId([]);
+    alert("you lost the game.");
+  };
+
+  const gameWin = (array) => {
+    if (newScore == array.length) {
+      alert("You just won!! you are amazing");
+    }
+  };
+
+  useEffect(() => {
+    const arr = arrayImage;
+    setNewArrayImage(arr);
+  }, [listCorrectPicksId, arrayImage]);
 
   const handleClick = (e) => {
     //let shuffle = [];
     const cardId = e.currentTarget.getAttribute("value");
-   let shuffle = shuffleImageArray(newArrayImage);
+    let shuffle = shuffleImageArray(newArrayImage);
     if (!listCorrectPicksId.includes(cardId)) {
       addScore(cardId);
-     
-       console.log(score);
-    }else{
-      gameOver()
-    }	
-   
+
+      gameWin(newArrayImage);
+      topScore();
+    } else {
+      gameOver();
+    }
+
     setNewArrayImage(shuffle);
   };
 
   return (
     <>
+      <Header
+        score={newScore}
+        highestScore={newHighestScore}
+        className="main-header"
+      />
       {newArrayImage?.map((poke) => {
         return (
           <>

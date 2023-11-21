@@ -5,10 +5,20 @@ import "./App.css";
 import { ImageContainer } from "./ImageContainer";
 import { callPoke, callPokeLink } from "./appi";
 import organizeObjectToPokeList from "./jsFunctions";
-function App() {
-  const [count, setCount] = useState(0);
-  const [arrayImage, setArrayImage] = useState([]);
+import { Header } from "./Header";
 
+function App() {
+  const [arrayImage, setArrayImage] = useState([]);
+  const [score, setScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
+
+  function updateScore(value) {
+    setScore(value);
+  }
+
+  function updateHighScore(value) {
+    setHighestScore(value);
+  }
   const reorganizeArrayImageRandomly = (array) => {
     const arrayImageLength = array.length;
     for (let i = 0; i < arrayImageLength; i++) {
@@ -42,11 +52,15 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>How good is your memory</h1>
-      </header>
-      <div className="main-container">
+      <Header
+        score={score}
+        highestScore={highestScore}
+        updateHighScore={updateHighScore}
+        updateScore={updateScore}
+      />
+      <div className="container">
         <ImageContainer
+          className="main-container"
           shuffleImageArray={shuffleImageArray}
           arrayImage={arrayImage}
         />
