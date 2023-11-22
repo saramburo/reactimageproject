@@ -21,3 +21,5 @@ export function Header({ score, highestScore }) {
     </>
   );
 }
+
+

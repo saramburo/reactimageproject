@@ -58,6 +58,7 @@ function App() {
 export default App;
 
 /* Dummy data
+Colores //https://www.onlinepalette.com/pokemon/
 
 useState([
     {
