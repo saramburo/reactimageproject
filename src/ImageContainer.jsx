@@ -3,10 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 export function ImageContainer({
   arrayImage,
-  shuffleImageArray,
-
-  updateScore,
-  updateHighScore,
+  shuffleImageArray
 }) {
   const [newArrayImage, setNewArrayImage] = useState([]);
   const [newScore, setNewScore] = useState(0);
@@ -19,9 +16,7 @@ export function ImageContainer({
     setNewScore((prev) => prev + 1);
   };
 
-  function updateNewScore(value) {
-    const val = updateScore(value);
-  }
+
 
   const topScore = () => {
     if (newScore >= newHighestScore) {
@@ -51,7 +46,6 @@ export function ImageContainer({
     let shuffle = shuffleImageArray(newArrayImage);
     if (!listCorrectPicksId.includes(cardId)) {
       addScore(cardId);
-
       gameWin(newArrayImage);
       topScore();
     } else {
@@ -73,7 +67,7 @@ export function ImageContainer({
           return (
             <>
               <div
-                className="component-container"
+                className="pokemon-container"
                 key={poke.id}
                 onClick={handleClick}
                 value={poke.id}
@@ -81,9 +75,9 @@ export function ImageContainer({
                 <img
                   className="image-container"
                   src={poke.url}
-                  style={{ width: 350, height: 350 }}
+                  style={{ width: 300, height: 300 }}
                 />
-                <p>{poke.name}</p>
+                <p className="pokemon-name">{poke.name}</p>
               </div>
             </>
           );

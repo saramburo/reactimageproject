@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { ImageContainer } from "./ImageContainer";
 import { callPoke, callPokeLink } from "./appi";
 import organizeObjectToPokeList from "./jsFunctions";
-import { Header } from "./Header";
+
 
 function App() {
   const [arrayImage, setArrayImage] = useState([]);
   const [score, setScore] = useState(0);
   const [highestScore, setHighestScore] = useState(0);
 
-  function updateScore(value) {
-    setScore(value);
-  }
-
-  function updateHighScore(value) {
-    setHighestScore(value);
-  }
+  
   const reorganizeArrayImageRandomly = (array) => {
     const arrayImageLength = array.length;
     for (let i = 0; i < arrayImageLength; i++) {
@@ -54,7 +46,7 @@ function App() {
     <>
       <div className="container">
         <ImageContainer
-          className="main-container"
+          className="div-container"
           shuffleImageArray={shuffleImageArray}
           arrayImage={arrayImage}
         />

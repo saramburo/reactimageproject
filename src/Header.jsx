@@ -5,16 +5,16 @@ export function Header({ score, highestScore }) {
     <>
       <div className="main-header">
         <header>
-          <h1>Memory Game</h1>
+          <h1>Pokemon Memory Game</h1>
         </header>
-        <div className="score-section">
-          <div className="current-score">
+        <div className="score-section" >
+          <div className="score">
             <h2>Current Score</h2>
-            <p>{score}</p>
+            <p className="result">{score}</p>
           </div>
-          <div className="highest-score">
+          <div className="score" >
             <h2>Highest Score</h2>
-            <p>{highestScore}</p>
+            <p className="result">{highestScore}</p>
           </div>
         </div>
       </div>
