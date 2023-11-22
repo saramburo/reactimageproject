@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
-export function ImageContainer({
-  arrayImage,
-  shuffleImageArray
-}) {
+export function ImageContainer({ arrayImage, shuffleImageArray }) {
   const [newArrayImage, setNewArrayImage] = useState([]);
   const [newScore, setNewScore] = useState(0);
   const [listCorrectPicksId, setListCorrectPicksId] = useState([]);
@@ -15,8 +12,6 @@ export function ImageContainer({
     setListCorrectPicksId((prev) => [...prev, id]);
     setNewScore((prev) => prev + 1);
   };
-
-
 
   const topScore = () => {
     if (newScore >= newHighestScore) {
@@ -75,7 +70,7 @@ export function ImageContainer({
                 <img
                   className="image-container"
                   src={poke.url}
-                  style={{ width: 300, height: 300 }}
+                  style={{ width: 150, height: 150 }}
                 />
                 <p className="pokemon-name">{poke.name}</p>
               </div>

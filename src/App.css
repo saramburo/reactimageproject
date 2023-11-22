@@ -1,18 +1,24 @@
 #root {
   max-width: 98vw;
-  
+  max-height: 100vh;
   margin: 0 auto;
-  
+
   padding: 2rem;
   text-align: center;
-  --yellow:#FFCC00;
-  --dark-yellow:#D5A100;
-  --blue:#0075BE;
-  --dark-blue:#0A285F;
-    background-color: var(--dark-blue);
-      overflow: hidden;
-    box-sizing: border-box;
-
+  --yellow: #ffcc00;
+  --dark-yellow: #d5a100;
+  --blue: #0075be;
+  --dark-blue: #0a285f;
+  --red: #fb1b1b;
+  --black: #000000;
+  --gray: #dfdfdf;
+  background-color: var(--dark-blue);
+  overflow: hidden;
+  box-sizing: border-box;
+  background: url("src/assets/images/background5.jpg") no-repeat center center
+    fixed;
+  background-size: cover;
+  height: 100%;
 }
 
 @keyframes logo-spin {
@@ -25,50 +31,51 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  a:nth-of-type(2) .pokelogo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
-
-
 .container {
-  background-color: var(--blue);
-  height: 1400px;
-  margin:0;
-  top:0;
-
+  height: 100vh;
+  margin: 0;
+  top: 0;
 }
 
 .container .main-header {
   width: 100vw;
   height: 100px;
   position: relative;
- 
 }
 
 .score-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100vw;
-   margin-bottom: 10px;
-  }
+  width: 600px;
+  margin-bottom: 10px;
+  margin: 0 auto;
 
-  .score{
-    margin:0 50px;
-   
-  
-  }
+  height: 100px;
+}
 
-  h2{
-    color:var(--yellow)
-  }
-  .result{
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
-  }
+.score {
+  display: flex;
+  flex-direction: row;
+  margin: 0 50px;
+  align-items: baseline;
+}
+
+h2 {
+  color: var(--yellow);
+}
+.result {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-left: 5px;
+}
 
 .image-grid {
   display: flex;
@@ -79,30 +86,37 @@
   top: 130px;
   height: auto;
 }
-.pokemon-container{
-  border:3px solid var(--dark-yellow);
+
+.pokemon-container {
+  border: 3px solid var(--dark-yellow);
   height: 100%;
   margin-top: 20px;
+  margin: 20px 20px;
 }
-.pokemon-container:hover{
-border:3px solid var(--dark-blue);
-background-color:var(--yellow);
+.pokemon-container:hover {
+  border: 3px solid var(--gray);
+  opacity: 0.75;
+  backdrop-filter: blur(10px);
+  transform: scale(1.2, 1.2);
 }
 
-.pokemon-name{
+.pokemon-name {
   height: 50px;
-  margin:0;
+  margin: 0;
   font-weight: bold;
   font-size: 1.5em;
-
+  color: var(--gray);
 }
 
-
-.image-container:hover{
+.image-container:hover {
   transform: translateX(10px);
+  cursor: pointer;
 }
 
-h1{
+h1 {
   color: var(--yellow);
+}
 
+.pokelogo {
+  width: 300px;
 }
